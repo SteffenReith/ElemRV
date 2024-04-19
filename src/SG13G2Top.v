@@ -4,7 +4,7 @@
 
 `timescale 1ns/1ps
 
-module SG13G2Top (
+module ElemRV (
   inout  wire          io_clock_PAD,
   inout  wire          io_reset_PAD,
   inout  wire          io_uartStd_txd_PAD,

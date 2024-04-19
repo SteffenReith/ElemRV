@@ -1,4 +1,4 @@
-current_design elem
+current_design ElemRV
 
 set clk_name core_clock
 set clk_port_name io_clock

@@ -1,5 +1,6 @@
-export DESIGN_NAME = ElemRV
-export PLATFORM    = ihp-sg13g2
+export DESIGN_NAME     = SG13G2Top
+export DESIGN_NICKNAME = ElemRV
+export PLATFORM        = ihp-sg13g2
 
 export VERILOG_FILES = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/src/SG13G2Top.v
 export SDC_FILE      = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
