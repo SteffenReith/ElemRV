@@ -1,4 +1,4 @@
-current_design ElemRV
+current_design ElemRVTop
 
 set_units -time ns -resistance kOhm -capacitance pF -voltage V -current uA
 set_max_fanout 20 [current_design]
@@ -66,10 +66,10 @@ set_driving_cell -lib_cell sg13g2_IOPadOut30mA -pin pad $clk_output_30mA_ports
 set_driving_cell -lib_cell sg13g2_IOPadInOut4mA -pin pad $clk_inout_ports
 set_driving_cell -lib_cell sg13g2_IOPadInOut30mA -pin pad $clk_inout_30mA_ports
 
-set_ideal_network [get_pins iOPadIn_5/p2c]
-set_ideal_network [get_pins iOPadIn_1/p2c]
-create_clock [get_pins iOPadIn_1/p2c] -name clk_core -period 40 -waveform {0 20}
-create_clock [get_pins iOPadIn_5/p2c] -name clk_jtag -period 100 -waveform {0 50}
+set_ideal_network [get_pins sg13g2_IOPadIn_5/p2c]
+set_ideal_network [get_pins sg13g2_IOPadIn_1/p2c]
+create_clock [get_pins sg13g2_IOPadIn_1/p2c] -name clk_core -period 40 -waveform {0 20}
+create_clock [get_pins sg13g2_IOPadIn_5/p2c] -name clk_jtag -period 100 -waveform {0 50}
 set_clock_uncertainty 0.15 [get_clocks clk_core]
 set_clock_uncertainty 0.15 [get_clocks clk_jtag]
 set_clock_transition 0.25 [get_clocks clk_core]
