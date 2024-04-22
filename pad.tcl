@@ -38,10 +38,10 @@ make_io_sites \
     -offset $BONDPAD_SIZE
 
 # Place Pads
-place_pad -row IO_SOUTH -location [calc_vertical_pad_location  0] {sg13g2_IOPad_pwr_io_s1} -master sg13g2_IOPadIOVdd
-place_pad -row IO_SOUTH -location [calc_vertical_pad_location  1] {sg13g2_IOPad_gnd_io_s1} -master sg13g2_IOPadIOVss
-place_pad -row IO_SOUTH -location [calc_vertical_pad_location  2] {sg13g2_IOPad_gnd_core_s1} -master sg13g2_IOPadVss
-place_pad -row IO_SOUTH -location [calc_vertical_pad_location  3] {sg13g2_IOPad_pwr_core_s1} -master sg13g2_IOPadVdd
+place_pad -row IO_SOUTH -location [calc_vertical_pad_location  0] {IOPad_pwr_io_s1} -master IOPadIOVdd
+place_pad -row IO_SOUTH -location [calc_vertical_pad_location  1] {IOPad_gnd_io_s1} -master IOPadIOVss
+place_pad -row IO_SOUTH -location [calc_vertical_pad_location  2] {IOPad_gnd_core_s1} -master IOPadVss
+place_pad -row IO_SOUTH -location [calc_vertical_pad_location  3] {IOPad_pwr_core_s1} -master IOPadVdd
 # jtag tms
 place_pad -row IO_SOUTH -location [calc_vertical_pad_location  4] {sg13g2_IOPadIn_3}
 # jtag tdi
@@ -60,10 +60,10 @@ place_pad -row IO_SOUTH -location [calc_vertical_pad_location 10] {sg13g2_IOPadO
 place_pad -row IO_SOUTH -location [calc_vertical_pad_location 11] {sg13g2_IOPadOut4mA_3}
 
 
-place_pad -row IO_EAST -location [calc_horizontal_pad_location  0] {sg13g2_IOPad_pwr_io_e1} -master sg13g2_IOPadIOVdd
-place_pad -row IO_EAST -location [calc_horizontal_pad_location  1] {sg13g2_IOPad_gnd_io_e1} -master sg13g2_IOPadIOVss
-place_pad -row IO_EAST -location [calc_horizontal_pad_location  2] {sg13g2_IOPad_gnd_core_e1} -master sg13g2_IOPadVss
-place_pad -row IO_EAST -location [calc_horizontal_pad_location  3] {sg13g2_IOPad_pwr_core_e1} -master sg13g2_IOPadVdd
+place_pad -row IO_EAST -location [calc_horizontal_pad_location  0] {IOPad_pwr_io_e1} -master IOPadIOVdd
+place_pad -row IO_EAST -location [calc_horizontal_pad_location  1] {IOPad_gnd_io_e1} -master IOPadIOVss
+place_pad -row IO_EAST -location [calc_horizontal_pad_location  2] {IOPad_gnd_core_e1} -master IOPadVss
+place_pad -row IO_EAST -location [calc_horizontal_pad_location  3] {IOPad_pwr_core_e1} -master IOPadVdd
 # gpio 0
 place_pad -row IO_EAST -location [calc_horizontal_pad_location  4] {sg13g2_IOPadInOut4mA_1}
 # clock
@@ -80,8 +80,8 @@ place_pad -row IO_EAST -location [calc_horizontal_pad_location  9] {sg13g2_IOPad
 place_pad -row IO_EAST -location [calc_horizontal_pad_location 10] {sg13g2_IOPadOut30mA_1}
 
 
-place_pad -row IO_NORTH -location [calc_vertical_pad_location  0] {sg13g2_IOPad_pwr_io_n1} -master sg13g2_IOPadIOVdd
-place_pad -row IO_NORTH -location [calc_vertical_pad_location  1] {sg13g2_IOPad_gnd_io_n1} -master sg13g2_IOPadIOVss
+place_pad -row IO_NORTH -location [calc_vertical_pad_location  0] {IOPad_pwr_io_n1} -master IOPadIOVdd
+place_pad -row IO_NORTH -location [calc_vertical_pad_location  1] {IOPad_gnd_io_n1} -master IOPadIOVss
 # hyperbus dq0-7
 place_pad -row IO_NORTH -location [calc_vertical_pad_location  2] {sg13g2_IOPadInOut30mA_1}
 place_pad -row IO_NORTH -location [calc_vertical_pad_location  3] {sg13g2_IOPadInOut30mA_2}
@@ -91,13 +91,13 @@ place_pad -row IO_NORTH -location [calc_vertical_pad_location  6] {sg13g2_IOPadI
 place_pad -row IO_NORTH -location [calc_vertical_pad_location  7] {sg13g2_IOPadInOut30mA_6}
 place_pad -row IO_NORTH -location [calc_vertical_pad_location  8] {sg13g2_IOPadInOut30mA_7}
 place_pad -row IO_NORTH -location [calc_vertical_pad_location  9] {sg13g2_IOPadInOut30mA_8}
-place_pad -row IO_NORTH -location [calc_vertical_pad_location 10] {sg13g2_IOPad_gnd_io_n2} -master sg13g2_IOPadIOVss
-place_pad -row IO_NORTH -location [calc_vertical_pad_location 11] {sg13g2_IOPad_pwr_io_n2} -master sg13g2_IOPadIOVdd
+place_pad -row IO_NORTH -location [calc_vertical_pad_location 10] {IOPad_gnd_io_n2} -master IOPadIOVss
+place_pad -row IO_NORTH -location [calc_vertical_pad_location 11] {IOPad_pwr_io_n2} -master IOPadIOVdd
 
-place_pad -row IO_WEST -location [calc_horizontal_pad_location  0] {sg13g2_IOPad_pwr_io_w1} -master sg13g2_IOPadIOVdd
-place_pad -row IO_WEST -location [calc_horizontal_pad_location  1] {sg13g2_IOPad_gnd_io_w1} -master sg13g2_IOPadIOVss
-place_pad -row IO_WEST -location [calc_horizontal_pad_location  2] {sg13g2_IOPad_gnd_core_w1} -master sg13g2_IOPadVss
-place_pad -row IO_WEST -location [calc_horizontal_pad_location  3] {sg13g2_IOPad_pwr_core_w1} -master sg13g2_IOPadVdd
+place_pad -row IO_WEST -location [calc_horizontal_pad_location  0] {IOPad_pwr_io_w1} -master IOPadIOVdd
+place_pad -row IO_WEST -location [calc_horizontal_pad_location  1] {IOPad_gnd_io_w1} -master IOPadIOVss
+place_pad -row IO_WEST -location [calc_horizontal_pad_location  2] {IOPad_gnd_core_w1} -master IOPadVss
+place_pad -row IO_WEST -location [calc_horizontal_pad_location  3] {IOPad_pwr_core_w1} -master IOPadVdd
 # spi cs0
 place_pad -row IO_WEST -location [calc_horizontal_pad_location  4] {sg13g2_IOPadOut4mA_6}
 # spi sck
@@ -115,15 +115,15 @@ place_pad -row IO_WEST -location [calc_horizontal_pad_location 10] {sg13g2_IOPad
 
 
 # Place Corner Cells and Filler
-place_corners sg13g2_Corner
+place_corners Corner
 
 set iofill {
-    sg13g2_Filler200
-    sg13g2_Filler400
-    sg13g2_Filler1000
-    sg13g2_Filler2000
-    sg13g2_Filler4000
-    sg13g2_Filler10000
+    Filler200
+    Filler400
+    Filler1000
+    Filler2000
+    Filler4000
+    Filler10000
 }
 
 place_io_fill -row IO_NORTH {*}$iofill
@@ -133,6 +133,6 @@ place_io_fill -row IO_EAST {*}$iofill
 
 connect_by_abutment
 
-place_bondpad -bond bondpad_70x70 sg13g2_IOPad* -offset {5.0 -70.0}
+place_bondpad -bond bondpad_70x70 IOPad* -offset {5.0 -70.0}
 
 remove_io_rows

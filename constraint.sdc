@@ -57,37 +57,43 @@ set jtag_output_ports [get_ports { \
     io_jtag_tdo_PAD \
 }]
 
-set_driving_cell -lib_cell sg13g2_IOPadIn -pin pad $clock_ports
-set_driving_cell -lib_cell sg13g2_IOPadIn -pin pad $clk_input_ports
-set_driving_cell -lib_cell sg13g2_IOPadIn -pin pad $jtag_input_ports
-set_driving_cell -lib_cell sg13g2_IOPadOut4mA -pin pad $clk_output_ports
-set_driving_cell -lib_cell sg13g2_IOPadOut4mA -pin pad $jtag_output_ports
-set_driving_cell -lib_cell sg13g2_IOPadOut30mA -pin pad $clk_output_30mA_ports
-set_driving_cell -lib_cell sg13g2_IOPadInOut4mA -pin pad $clk_inout_ports
-set_driving_cell -lib_cell sg13g2_IOPadInOut30mA -pin pad $clk_inout_30mA_ports
+set_driving_cell -lib_cell IOPadIn -pin pad $clock_ports
+set_driving_cell -lib_cell IOPadIn -pin pad $clk_input_ports
+set_driving_cell -lib_cell IOPadIn -pin pad $jtag_input_ports
+set_driving_cell -lib_cell IOPadOut4mA -pin pad $clk_output_ports
+set_driving_cell -lib_cell IOPadOut4mA -pin pad $jtag_output_ports
+set_driving_cell -lib_cell IOPadOut30mA -pin pad $clk_output_30mA_ports
+set_driving_cell -lib_cell IOPadInOut4mA -pin pad $clk_inout_ports
+set_driving_cell -lib_cell IOPadInOut30mA -pin pad $clk_inout_30mA_ports
 
 set_ideal_network [get_pins sg13g2_IOPadIn_5/p2c]
 set_ideal_network [get_pins sg13g2_IOPadIn_1/p2c]
-create_clock [get_pins sg13g2_IOPadIn_1/p2c] -name clk_core -period 40 -waveform {0 20}
-create_clock [get_pins sg13g2_IOPadIn_5/p2c] -name clk_jtag -period 100 -waveform {0 50}
-set_clock_uncertainty 0.15 [get_clocks clk_core]
-set_clock_uncertainty 0.15 [get_clocks clk_jtag]
-set_clock_transition 0.25 [get_clocks clk_core]
-set_clock_transition 0.25 [get_clocks clk_jtag]
+create_clock [get_pins sg13g2_IOPadIn_1/p2c] -name io_clock_PAD -period 40 -waveform {0 20}
+create_clock [get_pins sg13g2_IOPadIn_5/p2c] -name io_jtag_tck_PAD -period 100 -waveform {0 50}
+set_clock_uncertainty 0.15 [get_clocks io_clock_PAD]
+set_clock_uncertainty 0.15 [get_clocks io_jtag_tck_PAD]
+set_clock_transition 0.25 [get_clocks io_clock_PAD]
+set_clock_transition 0.25 [get_clocks io_jtag_tck_PAD]
 
-set_false_path -from [get_clocks clk_core] -to [get_clocks clk_jtag]
-set_false_path -from [get_clocks clk_jtag] -to [get_clocks clk_core]
+set_false_path -from [get_clocks io_clock_PAD] -to [get_clocks io_jtag_tck_PAD]
+set_false_path -from [get_clocks io_jtag_tck_PAD] -to [get_clocks io_clock_PAD]
 
-set_input_delay  8 -clock clk_core [get_ports { io_clock_PAD }]
-set_input_delay  8 -clock clk_jtag [get_ports { io_jtag_tck_PAD }]
-set_input_delay  8 -clock clk_core $clk_input_ports
-set_input_delay  8 -clock clk_jtag $jtag_input_ports
-set_input_delay  8 -clock clk_core $clk_inout_ports
-set_output_delay 8 -clock clk_core $clk_output_ports
-set_output_delay 8 -clock clk_core $clk_output_30mA_ports
-set_output_delay 8 -clock clk_jtag $jtag_output_ports
-set_output_delay 8 -clock clk_core $clk_inout_ports
-set_output_delay 8 -clock clk_core $clk_inout_30mA_ports
+set_input_delay  8 -clock io_clock_PAD [get_ports { io_clock_PAD }]
+set_input_delay  8 -clock io_jtag_tck_PAD [get_ports { io_jtag_tck_PAD }]
+set_input_delay  8 -clock io_clock_PAD $clk_input_ports
+set_input_delay  8 -clock io_jtag_tck_PAD $jtag_input_ports
+set_input_delay  8 -clock io_clock_PAD $clk_inout_ports
+set_output_delay 8 -clock io_clock_PAD $clk_output_ports
+set_output_delay 8 -clock io_clock_PAD $clk_output_30mA_ports
+set_output_delay 8 -clock io_jtag_tck_PAD $jtag_output_ports
+set_output_delay 8 -clock io_clock_PAD $clk_inout_ports
+set_output_delay 8 -clock io_clock_PAD $clk_inout_30mA_ports
+
+# Remark: We should specify delays for all ports
+# Warning: There are 20 input ports missing set_input_delay.
+# Warning: There are 10 output ports missing set_output_delay.
+# Warning: There are 23 unconstrained endpoints.
+
 
 set_load -pin_load 5 [all_inputs]
 set_load -pin_load 5 [all_outputs]

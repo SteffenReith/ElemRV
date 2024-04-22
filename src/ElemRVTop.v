@@ -138,151 +138,151 @@ module ElemRVTop (
     .io_per_gpioStatus_pins_write       (soc_io_per_gpioStatus_pins_write[3:0]      ), //o
     .io_per_gpioStatus_pins_writeEnable (soc_io_per_gpioStatus_pins_writeEnable[3:0])  //o
   );
-  sg13g2_IOPadIn sg13g2_IOPadIn_1 (
+  IOPadIn sg13g2_IOPadIn_1 (
     .p2c (sg13g2_IOPadIn_1_p2c), //o
     .pad ({io_clock_PAD}) 
   );
-  sg13g2_IOPadIn sg13g2_IOPadIn_2 (
+  IOPadIn sg13g2_IOPadIn_2 (
     .p2c (sg13g2_IOPadIn_2_p2c), //o
     .pad ({io_reset_PAD}) 
   );
-  sg13g2_IOPadIn sg13g2_IOPadIn_3 (
+  IOPadIn sg13g2_IOPadIn_3 (
     .p2c (sg13g2_IOPadIn_3_p2c), //o
     .pad ({io_jtag_tms_PAD}) 
   );
-  sg13g2_IOPadIn sg13g2_IOPadIn_4 (
+  IOPadIn sg13g2_IOPadIn_4 (
     .p2c (sg13g2_IOPadIn_4_p2c), //o
     .pad ({io_jtag_tdi_PAD}) 
   );
-  sg13g2_IOPadOut4mA sg13g2_IOPadOut4mA_1 (
+  IOPadOut4mA sg13g2_IOPadOut4mA_1 (
     .c2p (soc_io_plat_jtag_tdo), //i
     .pad ({io_jtag_tdo_PAD}) 
   );
-  sg13g2_IOPadIn sg13g2_IOPadIn_5 (
+  IOPadIn sg13g2_IOPadIn_5 (
     .p2c (sg13g2_IOPadIn_5_p2c), //o
     .pad ({io_jtag_tck_PAD}) 
   );
-  sg13g2_IOPadOut4mA sg13g2_IOPadOut4mA_2 (
+  IOPadOut4mA sg13g2_IOPadOut4mA_2 (
     .c2p (soc_io_per_uartStd_txd), //i
     .pad ({io_uartStd_txd_PAD}) 
   );
-  sg13g2_IOPadIn sg13g2_IOPadIn_6 (
+  IOPadIn sg13g2_IOPadIn_6 (
     .p2c (sg13g2_IOPadIn_6_p2c), //o
     .pad ({io_uartStd_rxd_PAD}) 
   );
-  sg13g2_IOPadIn sg13g2_IOPadIn_7 (
+  IOPadIn sg13g2_IOPadIn_7 (
     .p2c (sg13g2_IOPadIn_7_p2c), //o
     .pad ({io_uartStd_cts_PAD}) 
   );
-  sg13g2_IOPadOut4mA sg13g2_IOPadOut4mA_3 (
+  IOPadOut4mA sg13g2_IOPadOut4mA_3 (
     .c2p (soc_io_per_uartStd_rts), //i
     .pad ({io_uartStd_rts_PAD}) 
   );
-  sg13g2_IOPadInOut4mA sg13g2_IOPadInOut4mA_1 (
+  IOPadInOut4mA sg13g2_IOPadInOut4mA_1 (
     .c2p    (sg13g2_IOPadInOut4mA_1_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut4mA_1_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut4mA_1_p2c   ), //o
     .pad    ({io_gpioStatus_0_PAD}) 
   );
-  sg13g2_IOPadInOut4mA sg13g2_IOPadInOut4mA_2 (
+  IOPadInOut4mA sg13g2_IOPadInOut4mA_2 (
     .c2p    (sg13g2_IOPadInOut4mA_2_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut4mA_2_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut4mA_2_p2c   ), //o
     .pad    ({io_gpioStatus_1_PAD}) 
   );
-  sg13g2_IOPadInOut4mA sg13g2_IOPadInOut4mA_3 (
+  IOPadInOut4mA sg13g2_IOPadInOut4mA_3 (
     .c2p    (sg13g2_IOPadInOut4mA_3_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut4mA_3_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut4mA_3_p2c   ), //o
     .pad    ({io_gpioStatus_2_PAD}) 
   );
-  sg13g2_IOPadInOut4mA sg13g2_IOPadInOut4mA_4 (
+  IOPadInOut4mA sg13g2_IOPadInOut4mA_4 (
     .c2p    (sg13g2_IOPadInOut4mA_4_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut4mA_4_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut4mA_4_p2c   ), //o
     .pad    ({io_gpioStatus_3_PAD}) 
   );
-  sg13g2_IOPadOut4mA sg13g2_IOPadOut4mA_4 (
+  IOPadOut4mA sg13g2_IOPadOut4mA_4 (
     .c2p (sg13g2_IOPadOut4mA_4_c2p), //i
     .pad ({io_hyperbus_cs_0_PAD}) 
   );
-  sg13g2_IOPadOut30mA sg13g2_IOPadOut30mA_1 (
+  IOPadOut30mA sg13g2_IOPadOut30mA_1 (
     .c2p (soc_io_plat_hyperbus_ck), //i
     .pad ({io_hyperbus_ck_PAD}) 
   );
-  sg13g2_IOPadOut4mA sg13g2_IOPadOut4mA_5 (
+  IOPadOut4mA sg13g2_IOPadOut4mA_5 (
     .c2p (soc_io_plat_hyperbus_reset), //i
     .pad ({io_hyperbus_reset_PAD}) 
   );
-  sg13g2_IOPadInOut30mA sg13g2_IOPadInOut30mA_1 (
+  IOPadInOut30mA sg13g2_IOPadInOut30mA_1 (
     .c2p    (sg13g2_IOPadInOut30mA_1_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut30mA_1_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut30mA_1_p2c   ), //o
     .pad    ({io_hyperbus_dq_0_PAD}) 
   );
-  sg13g2_IOPadInOut30mA sg13g2_IOPadInOut30mA_2 (
+  IOPadInOut30mA sg13g2_IOPadInOut30mA_2 (
     .c2p    (sg13g2_IOPadInOut30mA_2_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut30mA_2_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut30mA_2_p2c   ), //o
     .pad    ({io_hyperbus_dq_1_PAD}) 
   );
-  sg13g2_IOPadInOut30mA sg13g2_IOPadInOut30mA_3 (
+  IOPadInOut30mA sg13g2_IOPadInOut30mA_3 (
     .c2p    (sg13g2_IOPadInOut30mA_3_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut30mA_3_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut30mA_3_p2c   ), //o
     .pad    ({io_hyperbus_dq_2_PAD}) 
   );
-  sg13g2_IOPadInOut30mA sg13g2_IOPadInOut30mA_4 (
+  IOPadInOut30mA sg13g2_IOPadInOut30mA_4 (
     .c2p    (sg13g2_IOPadInOut30mA_4_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut30mA_4_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut30mA_4_p2c   ), //o
     .pad    ({io_hyperbus_dq_3_PAD}) 
   );
-  sg13g2_IOPadInOut30mA sg13g2_IOPadInOut30mA_5 (
+  IOPadInOut30mA sg13g2_IOPadInOut30mA_5 (
     .c2p    (sg13g2_IOPadInOut30mA_5_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut30mA_5_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut30mA_5_p2c   ), //o
     .pad    ({io_hyperbus_dq_4_PAD}) 
   );
-  sg13g2_IOPadInOut30mA sg13g2_IOPadInOut30mA_6 (
+  IOPadInOut30mA sg13g2_IOPadInOut30mA_6 (
     .c2p    (sg13g2_IOPadInOut30mA_6_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut30mA_6_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut30mA_6_p2c   ), //o
     .pad    ({io_hyperbus_dq_5_PAD}) 
   );
-  sg13g2_IOPadInOut30mA sg13g2_IOPadInOut30mA_7 (
+  IOPadInOut30mA sg13g2_IOPadInOut30mA_7 (
     .c2p    (sg13g2_IOPadInOut30mA_7_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut30mA_7_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut30mA_7_p2c   ), //o
     .pad    ({io_hyperbus_dq_6_PAD}) 
   );
-  sg13g2_IOPadInOut30mA sg13g2_IOPadInOut30mA_8 (
+  IOPadInOut30mA sg13g2_IOPadInOut30mA_8 (
     .c2p    (sg13g2_IOPadInOut30mA_8_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut30mA_8_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut30mA_8_p2c   ), //o
     .pad    ({io_hyperbus_dq_7_PAD}) 
   );
-  sg13g2_IOPadInOut30mA sg13g2_IOPadInOut30mA_9 (
+  IOPadInOut30mA sg13g2_IOPadInOut30mA_9 (
     .c2p    (soc_io_plat_hyperbus_rwds_write      ), //i
     .c2p_en (soc_io_plat_hyperbus_rwds_writeEnable), //i
     .p2c    (sg13g2_IOPadInOut30mA_9_p2c          ), //o
     .pad    ({io_hyperbus_rwds_PAD}) 
   );
-  sg13g2_IOPadOut4mA sg13g2_IOPadOut4mA_6 (
+  IOPadOut4mA sg13g2_IOPadOut4mA_6 (
     .c2p (sg13g2_IOPadOut4mA_6_c2p), //i
     .pad ({io_spiFlash_cs_0_PAD}) 
   );
-  sg13g2_IOPadOut4mA sg13g2_IOPadOut4mA_7 (
+  IOPadOut4mA sg13g2_IOPadOut4mA_7 (
     .c2p (soc_io_plat_spiXip_sclk), //i
     .pad ({io_spiFlash_sck_PAD}) 
   );
-  sg13g2_IOPadInOut4mA sg13g2_IOPadInOut4mA_5 (
+  IOPadInOut4mA sg13g2_IOPadInOut4mA_5 (
     .c2p    (sg13g2_IOPadInOut4mA_5_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut4mA_5_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut4mA_5_p2c   ), //o
     .pad    ({io_spiFlash_dq_0_PAD}) 
   );
-  sg13g2_IOPadInOut4mA sg13g2_IOPadInOut4mA_6 (
+  IOPadInOut4mA sg13g2_IOPadInOut4mA_6 (
     .c2p    (sg13g2_IOPadInOut4mA_6_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut4mA_6_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut4mA_6_p2c   ), //o
