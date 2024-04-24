@@ -10,6 +10,8 @@ export VERILOG_FILES = \
 export SDC_FILE = \
 	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
 
+export SEAL_GDS = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring_1870x1870.gds
+
 # Available area: 1920um x 1920um
 # Sealring: roughly 60um
 # Remaining chip area: 1860um x 1860um
