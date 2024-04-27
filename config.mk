@@ -10,7 +10,7 @@ export VERILOG_FILES = \
 export SDC_FILE = \
 	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
 
-export SEAL_GDS = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring_1870x1870.gds
+export SEAL_GDS = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/sealring_1870x1870.gds
 
 # Available area: 1920um x 1920um
 # Sealring: roughly 60um
@@ -37,9 +37,9 @@ export PDN_TCL = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/pdn.tcl
 
 export ADDITIONAL_LEFS = \
 	$(IO_DIR)/lef/sg13g2_io.lef \
-	$(IO_DIR)/lef/bondpad_70x70.lef
+	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/bondpad/bondpad_70x70.lef
 export ADDITIONAL_GDS = \
 	$(IO_DIR)/gds/sg13g2_io.gds \
-	$(IO_DIR)/gds/bondpad_70x70.gds
+	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/bondpad/bondpad_70x70.gds
 export ADDITIONAL_LIBS = \
 	$(IO_DIR)/liberty/sg13g2_io_dummy.lib
