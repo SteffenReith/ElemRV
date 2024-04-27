@@ -1,6 +1,6 @@
 // Generator : SpinalHDL v1.10.1    git head : 2527c7c6b0fb0f95e5e1a5722a0be732b364ce43
 // Component : ElemRVTop
-// Git hash  : 4c0e7bd680b53f58b5a34854186dcdac20737724
+// Git hash  : 74394a9c61c1d98858f6b5efa570f8a3b331d4d9
 
 `timescale 1ns/1ps
 
@@ -31,14 +31,14 @@ module ElemRVTop (
   inout  wire          io_hyperbus_dq_6_PAD,
   inout  wire          io_hyperbus_dq_7_PAD,
   inout  wire          io_hyperbus_rwds_PAD,
-  inout  wire          io_spiFlash_cs_0_PAD,
-  inout  wire          io_spiFlash_dq_0_PAD,
-  inout  wire          io_spiFlash_dq_1_PAD,
-  inout  wire          io_spiFlash_sck_PAD
+  inout  wire          io_spi_cs_0_PAD,
+  inout  wire          io_spi_dq_0_PAD,
+  inout  wire          io_spi_dq_1_PAD,
+  inout  wire          io_spi_sck_PAD
 );
 
   reg        [7:0]    soc_io_plat_hyperbus_dq_read;
-  reg        [1:0]    soc_io_plat_spiXip_dq_read;
+  reg        [1:0]    soc_io_plat_spi_dq_read;
   reg        [3:0]    soc_io_per_gpioStatus_pins_read;
   wire                sg13g2_IOPadInOut4mA_1_c2p;
   wire                sg13g2_IOPadInOut4mA_1_c2p_en;
@@ -78,10 +78,10 @@ module ElemRVTop (
   wire       [7:0]    soc_io_plat_hyperbus_dq_writeEnable;
   wire                soc_io_plat_hyperbus_rwds_write;
   wire                soc_io_plat_hyperbus_rwds_writeEnable;
-  wire       [0:0]    soc_io_plat_spiXip_cs;
-  wire                soc_io_plat_spiXip_sclk;
-  wire       [1:0]    soc_io_plat_spiXip_dq_write;
-  wire       [1:0]    soc_io_plat_spiXip_dq_writeEnable;
+  wire       [0:0]    soc_io_plat_spi_cs;
+  wire                soc_io_plat_spi_sclk;
+  wire       [1:0]    soc_io_plat_spi_dq_write;
+  wire       [1:0]    soc_io_plat_spi_dq_writeEnable;
   wire                soc_io_per_uartStd_txd;
   wire                soc_io_per_uartStd_rts;
   wire       [3:0]    soc_io_per_gpioStatus_pins_write;
@@ -109,7 +109,7 @@ module ElemRVTop (
   wire                sg13g2_IOPadInOut4mA_5_p2c;
   wire                sg13g2_IOPadInOut4mA_6_p2c;
 
-  Nitrogen1 soc (
+  ElemRV soc (
     .io_plat_reset                      (sg13g2_IOPadIn_2_p2c                       ), //i
     .io_plat_clock                      (sg13g2_IOPadIn_1_p2c                       ), //i
     .io_plat_jtag_tms                   (sg13g2_IOPadIn_3_p2c                       ), //i
@@ -125,11 +125,11 @@ module ElemRVTop (
     .io_plat_hyperbus_rwds_read         (sg13g2_IOPadInOut30mA_9_p2c                ), //i
     .io_plat_hyperbus_rwds_write        (soc_io_plat_hyperbus_rwds_write            ), //o
     .io_plat_hyperbus_rwds_writeEnable  (soc_io_plat_hyperbus_rwds_writeEnable      ), //o
-    .io_plat_spiXip_cs                  (soc_io_plat_spiXip_cs                      ), //o
-    .io_plat_spiXip_sclk                (soc_io_plat_spiXip_sclk                    ), //o
-    .io_plat_spiXip_dq_read             (soc_io_plat_spiXip_dq_read[1:0]            ), //i
-    .io_plat_spiXip_dq_write            (soc_io_plat_spiXip_dq_write[1:0]           ), //o
-    .io_plat_spiXip_dq_writeEnable      (soc_io_plat_spiXip_dq_writeEnable[1:0]     ), //o
+    .io_plat_spi_cs                     (soc_io_plat_spi_cs                         ), //o
+    .io_plat_spi_sclk                   (soc_io_plat_spi_sclk                       ), //o
+    .io_plat_spi_dq_read                (soc_io_plat_spi_dq_read[1:0]               ), //i
+    .io_plat_spi_dq_write               (soc_io_plat_spi_dq_write[1:0]              ), //o
+    .io_plat_spi_dq_writeEnable         (soc_io_plat_spi_dq_writeEnable[1:0]        ), //o
     .io_per_uartStd_txd                 (soc_io_per_uartStd_txd                     ), //o
     .io_per_uartStd_rxd                 (sg13g2_IOPadIn_6_p2c                       ), //i
     .io_per_uartStd_cts                 (sg13g2_IOPadIn_7_p2c                       ), //i
@@ -270,23 +270,55 @@ module ElemRVTop (
   );
   sg13g2_IOPadOut4mA sg13g2_IOPadOut4mA_6 (
     .c2p (sg13g2_IOPadOut4mA_6_c2p), //i
-    .pad ({io_spiFlash_cs_0_PAD}) 
+    .pad ({io_spi_cs_0_PAD}) 
   );
   sg13g2_IOPadOut4mA sg13g2_IOPadOut4mA_7 (
-    .c2p (soc_io_plat_spiXip_sclk), //i
-    .pad ({io_spiFlash_sck_PAD}) 
+    .c2p (soc_io_plat_spi_sclk), //i
+    .pad ({io_spi_sck_PAD}) 
   );
   sg13g2_IOPadInOut4mA sg13g2_IOPadInOut4mA_5 (
     .c2p    (sg13g2_IOPadInOut4mA_5_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut4mA_5_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut4mA_5_p2c   ), //o
-    .pad    ({io_spiFlash_dq_0_PAD}) 
+    .pad    ({io_spi_dq_0_PAD}) 
   );
   sg13g2_IOPadInOut4mA sg13g2_IOPadInOut4mA_6 (
     .c2p    (sg13g2_IOPadInOut4mA_6_c2p   ), //i
     .c2p_en (sg13g2_IOPadInOut4mA_6_c2p_en), //i
     .p2c    (sg13g2_IOPadInOut4mA_6_p2c   ), //o
-    .pad    ({io_spiFlash_dq_1_PAD}) 
+    .pad    ({io_spi_dq_1_PAD}) 
+  );
+  sg13g2_IOPadIOVdd sg13g2_IOPadIOVdd_1 (
+  );
+  sg13g2_IOPadIOVdd sg13g2_IOPadIOVdd_2 (
+  );
+  sg13g2_IOPadIOVdd sg13g2_IOPadIOVdd_3 (
+  );
+  sg13g2_IOPadIOVdd sg13g2_IOPadIOVdd_4 (
+  );
+  sg13g2_IOPadIOVdd sg13g2_IOPadIOVdd_5 (
+  );
+  sg13g2_IOPadIOVss sg13g2_IOPadIOVss_1 (
+  );
+  sg13g2_IOPadIOVss sg13g2_IOPadIOVss_2 (
+  );
+  sg13g2_IOPadIOVss sg13g2_IOPadIOVss_3 (
+  );
+  sg13g2_IOPadIOVss sg13g2_IOPadIOVss_4 (
+  );
+  sg13g2_IOPadIOVss sg13g2_IOPadIOVss_5 (
+  );
+  sg13g2_IOPadVdd sg13g2_IOPadVdd_1 (
+  );
+  sg13g2_IOPadVdd sg13g2_IOPadVdd_2 (
+  );
+  sg13g2_IOPadVdd sg13g2_IOPadVdd_3 (
+  );
+  sg13g2_IOPadVss sg13g2_IOPadVss_1 (
+  );
+  sg13g2_IOPadVss sg13g2_IOPadVss_2 (
+  );
+  sg13g2_IOPadVss sg13g2_IOPadVss_3 (
   );
   assign sg13g2_IOPadInOut4mA_1_c2p = soc_io_per_gpioStatus_pins_write[0];
   assign sg13g2_IOPadInOut4mA_1_c2p_en = soc_io_per_gpioStatus_pins_writeEnable[0];
@@ -331,20 +363,20 @@ module ElemRVTop (
   assign sg13g2_IOPadInOut30mA_7_c2p_en = soc_io_plat_hyperbus_dq_writeEnable[6];
   assign sg13g2_IOPadInOut30mA_8_c2p = soc_io_plat_hyperbus_dq_write[7];
   assign sg13g2_IOPadInOut30mA_8_c2p_en = soc_io_plat_hyperbus_dq_writeEnable[7];
-  assign sg13g2_IOPadOut4mA_6_c2p = soc_io_plat_spiXip_cs[0];
-  assign sg13g2_IOPadInOut4mA_5_c2p = soc_io_plat_spiXip_dq_write[0];
-  assign sg13g2_IOPadInOut4mA_5_c2p_en = soc_io_plat_spiXip_dq_writeEnable[0];
+  assign sg13g2_IOPadOut4mA_6_c2p = soc_io_plat_spi_cs[0];
+  assign sg13g2_IOPadInOut4mA_5_c2p = soc_io_plat_spi_dq_write[0];
+  assign sg13g2_IOPadInOut4mA_5_c2p_en = soc_io_plat_spi_dq_writeEnable[0];
   always @(*) begin
-    soc_io_plat_spiXip_dq_read[0] = sg13g2_IOPadInOut4mA_5_p2c;
-    soc_io_plat_spiXip_dq_read[1] = sg13g2_IOPadInOut4mA_6_p2c;
+    soc_io_plat_spi_dq_read[0] = sg13g2_IOPadInOut4mA_5_p2c;
+    soc_io_plat_spi_dq_read[1] = sg13g2_IOPadInOut4mA_6_p2c;
   end
 
-  assign sg13g2_IOPadInOut4mA_6_c2p = soc_io_plat_spiXip_dq_write[1];
-  assign sg13g2_IOPadInOut4mA_6_c2p_en = soc_io_plat_spiXip_dq_writeEnable[1];
+  assign sg13g2_IOPadInOut4mA_6_c2p = soc_io_plat_spi_dq_write[1];
+  assign sg13g2_IOPadInOut4mA_6_c2p_en = soc_io_plat_spi_dq_writeEnable[1];
 
 endmodule
 
-module Nitrogen1 (
+module ElemRV (
   input  wire          io_plat_reset,
   input  wire          io_plat_clock,
   input  wire          io_plat_jtag_tms,
@@ -360,11 +392,11 @@ module Nitrogen1 (
   input  wire          io_plat_hyperbus_rwds_read,
   output wire          io_plat_hyperbus_rwds_write,
   output wire          io_plat_hyperbus_rwds_writeEnable,
-  output wire [0:0]    io_plat_spiXip_cs,
-  output wire          io_plat_spiXip_sclk,
-  input  wire [1:0]    io_plat_spiXip_dq_read,
-  output wire [1:0]    io_plat_spiXip_dq_write,
-  output wire [1:0]    io_plat_spiXip_dq_writeEnable,
+  output wire [0:0]    io_plat_spi_cs,
+  output wire          io_plat_spi_sclk,
+  input  wire [1:0]    io_plat_spi_dq_read,
+  output wire [1:0]    io_plat_spi_dq_write,
+  output wire [1:0]    io_plat_spi_dq_writeEnable,
   output wire          io_per_uartStd_txd,
   input  wire          io_per_uartStd_rxd,
   input  wire          io_per_uartStd_cts,
@@ -1270,7 +1302,7 @@ module Nitrogen1 (
     .io_dataBus_r_payload_last    (system_spiXipControllerCtrl_io_dataBus_r_payload_last                                              ), //o
     .io_spi_cs                    (system_spiXipControllerCtrl_io_spi_cs                                                              ), //o
     .io_spi_sclk                  (system_spiXipControllerCtrl_io_spi_sclk                                                            ), //o
-    .io_spi_dq_read               (io_plat_spiXip_dq_read[1:0]                                                                        ), //i
+    .io_spi_dq_read               (io_plat_spi_dq_read[1:0]                                                                           ), //i
     .io_spi_dq_write              (system_spiXipControllerCtrl_io_spi_dq_write[1:0]                                                   ), //o
     .io_spi_dq_writeEnable        (system_spiXipControllerCtrl_io_spi_dq_writeEnable[1:0]                                             ), //o
     .io_interrupt                 (system_spiXipControllerCtrl_io_interrupt                                                           ), //o
@@ -1905,10 +1937,10 @@ module Nitrogen1 (
   assign io_plat_hyperbus_dq_writeEnable = system_hyperbus_phy_io_hyperbus_dq_writeEnable;
   assign io_plat_hyperbus_rwds_write = system_hyperbus_phy_io_hyperbus_rwds_write;
   assign io_plat_hyperbus_rwds_writeEnable = system_hyperbus_phy_io_hyperbus_rwds_writeEnable;
-  assign io_plat_spiXip_cs = system_spiXipControllerCtrl_io_spi_cs;
-  assign io_plat_spiXip_sclk = system_spiXipControllerCtrl_io_spi_sclk;
-  assign io_plat_spiXip_dq_write = system_spiXipControllerCtrl_io_spi_dq_write;
-  assign io_plat_spiXip_dq_writeEnable = system_spiXipControllerCtrl_io_spi_dq_writeEnable;
+  assign io_plat_spi_cs = system_spiXipControllerCtrl_io_spi_cs;
+  assign io_plat_spi_sclk = system_spiXipControllerCtrl_io_spi_sclk;
+  assign io_plat_spi_dq_write = system_spiXipControllerCtrl_io_spi_dq_write;
+  assign io_plat_spi_dq_writeEnable = system_spiXipControllerCtrl_io_spi_dq_writeEnable;
   assign soc_axi4ReadOnlyDecoder_1_io_outputs_0_ar_validPipe_fire = (soc_axi4ReadOnlyDecoder_1_io_outputs_0_ar_validPipe_valid && soc_axi4ReadOnlyDecoder_1_io_outputs_0_ar_validPipe_ready);
   assign soc_axi4ReadOnlyDecoder_1_io_outputs_0_ar_validPipe_valid = soc_axi4ReadOnlyDecoder_1_io_outputs_0_ar_rValid;
   assign soc_axi4ReadOnlyDecoder_1_io_outputs_0_ar_validPipe_payload_addr = axi4ReadOnlyDecoder_1_io_outputs_0_ar_payload_addr;
@@ -5692,10 +5724,10 @@ module Axi4ReadOnlySpiXipController (
   always @(posedge _zz_1) begin
     if(!_zz_2) begin
       _zz_io_bus_PRDATA <= 1'b0;
-      _zz_io_config_clockDivider <= 16'h01f4;
-      _zz_io_bus_PRDATA_1 <= 16'h01f4;
-      _zz_io_bus_PRDATA_2 <= 16'h01f4;
-      _zz_io_bus_PRDATA_3 <= 16'h01f4;
+      _zz_io_config_clockDivider <= 16'h0032;
+      _zz_io_bus_PRDATA_1 <= 16'h0032;
+      _zz_io_bus_PRDATA_2 <= 16'h0032;
+      _zz_io_bus_PRDATA_3 <= 16'h0032;
       _zz_io_bus_PRDATA_4 <= 1'b0;
       _zz_io_bus_PRDATA_5 <= 1'b0;
     end else begin

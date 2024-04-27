@@ -21,8 +21,8 @@ set clk_output_ports [get_ports { \
     io_uartStd_rts_PAD \
     io_hyperbus_cs_0_PAD \
     io_hyperbus_reset_PAD \
-    io_spiFlash_cs_0_PAD \
-    io_spiFlash_sck_PAD \
+    io_spi_cs_0_PAD \
+    io_spi_sck_PAD \
 }]
 set clk_output_30mA_ports [get_ports { \
     io_hyperbus_ck_PAD \
@@ -33,8 +33,8 @@ set clk_inout_ports [get_ports { \
     io_gpioStatus_0_PAD \
     io_gpioStatus_0_PAD \
     io_gpioStatus_0_PAD \
-    io_spiFlash_dq_0_PAD \
-    io_spiFlash_dq_1_PAD \
+    io_spi_dq_0_PAD \
+    io_spi_dq_1_PAD \
 }]
 set clk_inout_30mA_ports [get_ports { \
     io_hyperbus_dq_0_PAD \
