@@ -83,6 +83,7 @@ set_input_delay  8 -clock clk_jtag [get_ports { io_jtag_tck_PAD }]
 set_input_delay  8 -clock clk_core $clk_input_ports
 set_input_delay  8 -clock clk_jtag $jtag_input_ports
 set_input_delay  8 -clock clk_core $clk_inout_ports
+set_input_delay  8 -clock clk_core $clk_inout_30mA_ports
 set_output_delay 8 -clock clk_core $clk_output_ports
 set_output_delay 8 -clock clk_core $clk_output_30mA_ports
 set_output_delay 8 -clock clk_jtag $jtag_output_ports
