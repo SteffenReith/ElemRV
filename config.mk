@@ -36,10 +36,10 @@ export FOOTPRINT_TCL = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/pad.tcl
 export PDN_TCL = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/pdn.tcl
 
 export ADDITIONAL_LEFS = \
-	$(IO_DIR)/lef/sg13g2_io.lef \
+	./platforms/$(PLATFORM)/lef/sg13g2_io.lef \
 	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/bondpad/bondpad_70x70.lef
 export ADDITIONAL_GDS = \
-	$(IO_DIR)/gds/sg13g2_io.gds \
+	./platforms/$(PLATFORM)/gds/sg13g2_io.gds \
 	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/bondpad/bondpad_70x70.gds
 export ADDITIONAL_LIBS = \
 	$(IO_DIR)/liberty/sg13g2_io_dummy.lib
