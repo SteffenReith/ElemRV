@@ -1,3 +1,5 @@
+`timescale 1ns/10ps
+
 module elemrv_tb;
 	reg clock;
 	reg reset;
@@ -40,7 +42,7 @@ module elemrv_tb;
 		spi_dq1 <= 0;
 		uartStd_rxd <= 1;
 		uartStd_cts <= 0;
-		#100 reset <= 1;
+		#1000 reset <= 1;
 
 		#10000 $finish;
 	end
@@ -64,7 +66,7 @@ module elemrv_tb;
 	wire uartStd_txd_pin;
 	wire uartStd_rxd_pin;
 	wire uartStd_cts_pin;
-	wire uartStd_rts_pinx;
+	wire uartStd_rts_pin;
 
 	assign clock_pin = clock;
 	assign reset_pin = reset;
