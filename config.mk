@@ -2,11 +2,8 @@ export DESIGN_NAME     = ElemRVTop
 export DESIGN_NICKNAME = ElemRV
 export PLATFORM        = ihp-sg13g2
 
-export IO_DIR = $(SG13G2_IO_DIR_PATH)/ihp-sg13g2/libs.ref/sg13g2_io/
-
 export VERILOG_FILES = \
-	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/src/ElemRVTop.v \
-	$(IO_DIR)/verilog/sg13g2_io.v
+	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/src/ElemRVTop.v
 export SDC_FILE = \
 	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
 
@@ -35,11 +32,13 @@ export PLACE_DENSITY = 0.70
 export FOOTPRINT_TCL = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/pad.tcl
 export PDN_TCL = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/pdn.tcl
 
+# Following exports should be part of platforms/ihp-sg13g2/config.mk and
+# might be obsolete in the future.
 export ADDITIONAL_LEFS = \
 	./platforms/$(PLATFORM)/lef/sg13g2_io.lef \
-	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/bondpad/bondpad_70x70.lef
+	./platforms/$(PLATFORM)/lef/bondpad_70x70.lef
 export ADDITIONAL_GDS = \
 	./platforms/$(PLATFORM)/gds/sg13g2_io.gds \
-	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/bondpad/bondpad_70x70.gds
+	./platforms/$(PLATFORM)/gds/bondpad_70x70.gds
 export ADDITIONAL_LIBS = \
-	$(IO_DIR)/liberty/sg13g2_io_dummy.lib
+	./platforms/$(PLATFORM)/lib/sg13g2_io_dummy.lib
