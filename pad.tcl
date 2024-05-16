@@ -1,6 +1,6 @@
 set IO_LENGTH 180
 set IO_WIDTH 80
-set BONDPAD_SIZE 70
+set BONDPAD_SIZE 83.5
 set MAX_NUM_PADS 12
 
 proc calc_horizontal_pad_location {index} {
