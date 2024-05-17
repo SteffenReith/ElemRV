@@ -1,15 +1,17 @@
 set IO_LENGTH 180
 set IO_WIDTH 80
-set BONDPAD_SIZE 83.5
+set BONDPAD_SIZE 70
+set SEALRING_OFFSET 45
 set MAX_NUM_PADS 12
 
 proc calc_horizontal_pad_location {index} {
     global IO_LENGTH
     global IO_WIDTH
     global MAX_NUM_PADS
+    global SEALRING_OFFSET
 
     set DIE_WIDTH [expr {[lindex $::env(DIE_AREA) 2] - [lindex $::env(DIE_AREA) 0]}]
-    set PAD_AREA_WIDTH [expr {$DIE_WIDTH - $IO_LENGTH - $IO_LENGTH}]
+    set PAD_AREA_WIDTH [expr {$DIE_WIDTH - ($IO_LENGTH * 2) - $SEALRING_OFFSET}]
     set HORIZONTAL_PAD_DISTANCE [expr {$PAD_AREA_WIDTH / ( $MAX_NUM_PADS + 1 )}]
 
     return [expr {$IO_LENGTH - ( $IO_WIDTH / 2 ) + $HORIZONTAL_PAD_DISTANCE * ( $index + 1 )}]
@@ -19,9 +21,10 @@ proc calc_vertical_pad_location {index} {
     global IO_LENGTH
     global IO_WIDTH
     global MAX_NUM_PADS
+    global SEALRING_OFFSET
 
     set DIE_HEIGHT [expr {[lindex $::env(DIE_AREA) 3] - [lindex $::env(DIE_AREA) 1]}]
-    set PAD_AREA_HEIGHT [expr {$DIE_HEIGHT - $IO_LENGTH - $IO_LENGTH}]
+    set PAD_AREA_HEIGHT [expr {$DIE_HEIGHT - ($IO_LENGTH * 2) - $SEALRING_OFFSET}]
     set VERTICAL_PAD_DISTANCE [expr {$PAD_AREA_HEIGHT / ( $MAX_NUM_PADS + 1 )}]
 
     return [expr {$IO_LENGTH - ( $IO_WIDTH / 2 ) + $VERTICAL_PAD_DISTANCE * ( $index + 1 )}]
@@ -30,12 +33,13 @@ proc calc_vertical_pad_location {index} {
 make_fake_io_site -name IOLibSite -width 1 -height $IO_LENGTH
 make_fake_io_site -name IOLibCSite -width $IO_LENGTH -height $IO_LENGTH
 
+set IO_OFFSET [expr {$BONDPAD_SIZE + $SEALRING_OFFSET}]
 # Create IO Rows
 make_io_sites \
     -horizontal_site IOLibSite \
     -vertical_site IOLibSite \
     -corner_site IOLibCSite \
-    -offset $BONDPAD_SIZE
+    -offset $IO_OFFSET
 
 # Place Pads
 place_pad -row IO_SOUTH -location [calc_vertical_pad_location  0] {sg13g2_IOPadIOVdd_1} -master sg13g2_IOPadIOVdd

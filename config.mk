@@ -7,7 +7,7 @@ export VERILOG_FILES = \
 export SDC_FILE = \
 	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
 
-export SEAL_GDS = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/sealring_1899x1893.gds
+export SEAL_GDS = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/sealring_1966x1962.gds
 
 # Available area: 1920um x 1920um
 # Sealring: roughly 60um
@@ -17,8 +17,8 @@ export SEAL_GDS = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/sealr
 # Margin for core power ring: 80um
 # Total margin to core area: 330um
 # Core site: 0.48 x 3.78
-export DIE_AREA = 0 0 1899.84 1893.78
-export CORE_AREA = 336.48 336.42 1564.8 1557.36
+export DIE_AREA = 0 0 1965.12 1961.82
+export CORE_AREA = 369.12 370.44 1597.44 1591.38
 
 # Allow routing on the TopMetal layers
 export MAX_ROUTING_LAYER = TopMetal2
@@ -27,7 +27,7 @@ export USE_FILL = 1
 
 export TNS_END_PERCENT = 100
 
-export PLACE_DENSITY = 0.70
+export PLACE_DENSITY = 0.80
 
 export FOOTPRINT_TCL = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/pad.tcl
 export PDN_TCL = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/pdn.tcl
