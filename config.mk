@@ -7,7 +7,7 @@ export VERILOG_FILES = \
 export SDC_FILE = \
 	./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
 
-export SEAL_GDS = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/sealring_1966x1962.gds
+export SEAL_GDS = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/sealring_1966x1962.gds.gz
 
 # Available area: 1920um x 1920um
 # Sealring: roughly 60um
