@@ -18,7 +18,7 @@ export SEAL_GDS = ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/sealr
 # Total margin to core area: 330um
 # Core site: 0.48 x 3.78
 export DIE_AREA = 0 0 2015.04 2014.74
-export CORE_AREA = 394.08 369.9 1622.4 1617.86
+export CORE_AREA = 394.08 396.92 1622.4 1617.86
 
 # Allow routing on the TopMetal layers
 export MAX_ROUTING_LAYER = TopMetal2
